@@ -1,0 +1,40 @@
+
+<div class="Absolute-Center">
+  <div class="col-md-15 login-center" style="background-color:rgb(244, 248, 250)">
+    <h1>Select Role and signIn</h1>
+    <div class="log-img"> <img src="./assets/11.png" alt=" "></div>
+    <form (ngSubmit)="signIn(login)" #loginForm="ngForm" novalidate>
+      <div class="form-group">
+        <select class="form-control select2" style="width: 100%;" ng-model="roleName" ng-options="roleName for roleName in roleType">
+          <option value="avon">AVON</option>
+          <option value="partner">Partner</option>
+          <option value="customer">Customer</option>
+          <option value="reps">Representative</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input type="text" autocomplete="off" name="name" class="form-control" [(ngModel)]="login.email" id="name"
+          #name="ngModel" required>
+      </div>
+    
+      <div class="alert alert-danger" [hidden]="name.valid || name.pristine">Name is required</div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="login.password"
+          #password="ngModel" required>
+      </div>
+      <div class="alert alert-danger" [hidden]="password.valid || password.pristine">Password is required</div>
+      <div class="alert alert-danger" [hidden]="!submitted">Username or Password is incorrect !!!</div>
+      <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Login</button>
+     <!-- <nav>
+        <a routerLink="../register" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Signup</a>
+      </nav>-->
+    </form>
+  </div>
+</div>
+
+
+

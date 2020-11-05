@@ -1,0 +1,41 @@
+pipeline {
+  agent any
+    
+  tools {nodejs "node"}
+    
+  stages {  
+    stage('Install dependencies') {
+      steps {
+        bat 'npm install'
+      }
+    }
+	stage('Run') {
+      parallel {
+        stage('Run ') {
+            steps { bat 'ng serve' }
+        }
+      }
+    } 
+	stage('Build') {
+      parallel {
+        stage('Build ') {
+            steps { bat 'ng run-script build' }
+        }
+      }
+    } 
+	stage('Test') {
+      parallel {
+        stage('Test') {
+            steps { bat 'ng run-script build' }
+        }
+      }
+    } 
+	stage('Test1') {
+      parallel {
+        stage('Static code analysis') {
+            steps { bat 'ng run-script lint' }
+        }
+      }
+    }   
+  }
+}

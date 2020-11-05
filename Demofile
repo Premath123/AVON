@@ -11,22 +11,28 @@ pipeline {
     }
 	stage('Build') {
       parallel {
-        stage('Build ') {
-            steps { bat 'ng run-script build' }
+        stage('Build') {
+            steps { 
+            bat 'ng build' 
+            }
         }
       }
     } 
 	stage('Test') {
       parallel {
         stage('Test') {
-            steps { bat 'ng run-script test' }
+            steps { 
+            bat 'ng test' 
+            }
         }
       }
     } 
 	stage('Test1') {
       parallel {
         stage('Static code analysis') {
-            steps { bat 'ng run-script lint' }
+            steps { 
+            bat 'ng lint' 
+            }
         }
       }
     }   

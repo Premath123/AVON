@@ -9,13 +9,6 @@ pipeline {
         bat 'npm install'
       }
     }
-	stage('Run') {
-      parallel {
-        stage('Run ') {
-            steps { bat 'ng serve' }
-        }
-      }
-    } 
 	stage('Build') {
       parallel {
         stage('Build ') {
@@ -26,7 +19,7 @@ pipeline {
 	stage('Test') {
       parallel {
         stage('Test') {
-            steps { bat 'ng run-script build' }
+            steps { bat 'ng run-script test' }
         }
       }
     } 
